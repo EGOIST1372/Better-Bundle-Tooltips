@@ -1,0 +1,11 @@
+{
+	"required": true,
+	"package": "io.github.andrew6rant.betterbundletooltips.mixin.client",
+	"compatibilityLevel": "JAVA_21",
+	"client": [
+		"BundleTooltipComponentMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	}
+}

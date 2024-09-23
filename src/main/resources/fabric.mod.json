@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "betterbundletooltips",
+	"version": "${version}",
+	"name": "Better Bundle Tooltips",
+	"description": "Tweak the new bundle tooltips to look nicer",
+	"authors": [
+		"Andrew6rant (Andrew Grant)"
+	],
+	"contact": {
+		"sources": ""
+	},
+	"license": "MIT",
+	"icon": "assets/modid/icon.png",
+	"environment": "*",
+	"entrypoints": {
+	},
+	"mixins": [
+		{
+			"config": "betterbundletooltips.client.mixins.json",
+			"environment": "client"
+		}
+	],
+	"depends": {
+		"fabricloader": ">=0.16.2",
+		"minecraft": "*",
+		"java": ">=21",
+		"fabric-api": "*"
+	},
+	"suggests": {
+		"another-mod": "*"
+	}
+}
