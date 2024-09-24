@@ -10,14 +10,13 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
 
 public class BundleTooltipUtil {
-    public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture, Text progressBarLabel) {
+    public static int BUNDLE_ITEM_ROW_COUNT = 6; // number of items in a row, not number of rows lol
+    public static int BUNDLE_ITEM_COLUMN_COUNT = 5;
+    public static int BUNDLE_MAX_COUNT = BUNDLE_ITEM_ROW_COUNT * BUNDLE_ITEM_COLUMN_COUNT;
+
+    public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
         drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarFillTexture,x + 1, y - 3, progressBarFill, 4);
         drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarBorderTexture, x, y - 3, 96, 4);
-        /*
-        if (progressBarLabel != null) {
-            drawContext.drawCenteredTextWithShadow(textRenderer, progressBarLabel, x + 48, y - 4, 16777215);
-        }
-        */
     }
 
     // This is to make it easier for other mods to modify bundle tooltip heights after mine.
@@ -26,7 +25,7 @@ public class BundleTooltipUtil {
     }
 
     public static int getNumberOfStacksShown(int i) {
-        int j = i > 16 ? 15 : 16;
+        int j = i > BUNDLE_MAX_COUNT ? (BUNDLE_MAX_COUNT-1) : BUNDLE_MAX_COUNT;
         int k = i % 4;
         int l = k == 0 ? 0 : 4 - k;
         return Math.min(i, j - l);

@@ -8,6 +8,7 @@ import net.minecraft.component.type.BundleContentsComponent;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.math.MathHelper;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -17,6 +18,9 @@ import org.spongepowered.asm.mixin.injection.Constant;
 import org.spongepowered.asm.mixin.injection.ModifyConstant;
 
 import java.util.List;
+
+import static io.github.andrew6rant.betterbundletooltips.BundleTooltipUtil.BUNDLE_ITEM_ROW_COUNT;
+import static io.github.andrew6rant.betterbundletooltips.BundleTooltipUtil.BUNDLE_MAX_COUNT;
 
 @Mixin(BundleTooltipComponent.class)
 public abstract class BundleTooltipComponentMixin {
@@ -83,7 +87,7 @@ public abstract class BundleTooltipComponentMixin {
 	 */
 	@Overwrite
 	private void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext) {
-		BundleTooltipUtil.drawProgressBar(x, y, textRenderer, drawContext, this.getProgressBarFillTexture(), this.getProgressBarFill(), BUNDLE_PROGRESS_BAR_BORDER_TEXTURE, this.getProgressBarLabel());
+		BundleTooltipUtil.drawProgressBar(x, y, textRenderer, drawContext, this.getProgressBarFillTexture(), this.getProgressBarFill(), BUNDLE_PROGRESS_BAR_BORDER_TEXTURE);
 	}
 
 	@ModifyConstant(method = {
@@ -110,13 +114,22 @@ public abstract class BundleTooltipComponentMixin {
 		return 6;
 	}
 
+
+	@ModifyConstant(method = {
+			"getRows()I",
+			"drawNonEmptyTooltip(Lnet/minecraft/client/font/TextRenderer;IIIILnet/minecraft/client/gui/DrawContext;)V"
+	}, constant = @Constant(intValue = 4, ordinal = 0))
+	private int betterbundletooltips$changeRows(int rows) {
+		return BUNDLE_ITEM_ROW_COUNT;
+	}
+
 	/**
 	 * @author Andrew6rant (Andrew Grant)
 	 * @reason Inject-cancel or modifyConstant would not be more compatible anyway
 	 */
 	@Overwrite
 	private int getNumVisibleSlots() {
-		return Math.min(16, this.bundleContents.size());
+		return Math.min(BUNDLE_MAX_COUNT, this.bundleContents.size());
 	}
 
 
@@ -126,7 +139,7 @@ public abstract class BundleTooltipComponentMixin {
 	 */
 	@Overwrite
 	private void drawNonEmptyTooltip(TextRenderer textRenderer, int x, int y, int width, int height, DrawContext context) {
-		boolean bl = this.bundleContents.size() > 16;
+		boolean bl = this.bundleContents.size() > BUNDLE_MAX_COUNT;
 		List<ItemStack> list = this.firstStacksInContents(BundleTooltipUtil.getNumberOfStacksShown(this.bundleContents.size()));
 		int i = x + this.getXMargin(width) + 96;
 		int j = y + this.getRows() * 18;
