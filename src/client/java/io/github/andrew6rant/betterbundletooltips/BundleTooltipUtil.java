@@ -15,13 +15,33 @@ public class BundleTooltipUtil {
     public static int BUNDLE_MAX_COUNT = BUNDLE_ITEM_ROW_COUNT * BUNDLE_ITEM_COLUMN_COUNT;
 
     public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
-        drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarFillTexture,x + 1, y - 3, progressBarFill, 4);
-        drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarBorderTexture, x, y - 3, 96, 4);
+        drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarFillTexture,x + 1, y - 2, progressBarFill, 4);
+        drawContext.drawGuiTexture(RenderLayer::getGuiTextured, progressBarBorderTexture, x, y - 2, 108, 4);
     }
 
-    // This is to make it easier for other mods to modify bundle tooltip heights after mine.
+    // This is to make it easier for other mods to modify bundle tooltip heights/widths after mine.
     public static int getTooltipBackgroundXoffset() {
-        return -14;
+        return -13;
+    }
+    public static int getTooltipWidth() {
+        return 108;
+    }
+
+
+    public static int getProgressBarFill() {
+        return 106;
+    }
+    public static int getItemPadding() {
+        return 18;
+    }
+    public static int getItemOffset() {
+        return 1;
+    }
+    public static int getExtraItemsTextOffsetY() {
+        return 6;
+    }
+    public static int getItemTextOffsetX() {
+        return 8;
     }
 
     public static int getNumberOfStacksShown(int i) {

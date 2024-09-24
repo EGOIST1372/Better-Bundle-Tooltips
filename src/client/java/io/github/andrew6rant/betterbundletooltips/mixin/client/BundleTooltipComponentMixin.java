@@ -96,22 +96,28 @@ public abstract class BundleTooltipComponentMixin {
 			"drawNonEmptyTooltip(Lnet/minecraft/client/font/TextRenderer;IIIILnet/minecraft/client/gui/DrawContext;)V"*/
 	}, constant = @Constant(intValue = 24))
 	private int betterbundletooltips$shrinkItemPadding(int padding) {
-		return 18;
+		return BundleTooltipUtil.getItemPadding();
 	}
 	@ModifyConstant(method = "drawItem(IIILjava/util/List;ILnet/minecraft/client/font/TextRenderer;Lnet/minecraft/client/gui/DrawContext;)V",
 			constant = @Constant(intValue = 4))
 	private int betterbundletooltips$drawItemOffset(int offset) {
-		return 1;
+		return BundleTooltipUtil.getItemOffset();
 	}
 	@ModifyConstant(method = "drawExtraItemsCount(IIILnet/minecraft/client/font/TextRenderer;Lnet/minecraft/client/gui/DrawContext;)V",
 			constant = @Constant(intValue = 12))
 	private static int betterbundletooltips$drawExtraItemsTextOffsetX(int offsetX) {
-		return 8;
+		return BundleTooltipUtil.getItemTextOffsetX();
 	}
 	@ModifyConstant(method = "drawExtraItemsCount(IIILnet/minecraft/client/font/TextRenderer;Lnet/minecraft/client/gui/DrawContext;)V",
 			constant = @Constant(intValue = 10))
 	private static int betterbundletooltips$drawExtraItemsTextOffsetY(int offsetY) {
-		return 6;
+		return BundleTooltipUtil.getExtraItemsTextOffsetY();
+	}
+
+	@ModifyConstant(method = "Lnet/minecraft/client/gui/tooltip/BundleTooltipComponent;getProgressBarFill()I",
+			constant = @Constant(intValue = 94))
+	private int betterbundletooltips$progressBarFill(int fillX) {
+		return BundleTooltipUtil.getProgressBarFill();
 	}
 
 
@@ -121,6 +127,15 @@ public abstract class BundleTooltipComponentMixin {
 	}, constant = @Constant(intValue = 4, ordinal = 0))
 	private int betterbundletooltips$changeRows(int rows) {
 		return BUNDLE_ITEM_ROW_COUNT;
+	}
+	@ModifyConstant(method = {
+			"getWidth(Lnet/minecraft/client/font/TextRenderer;)I",
+			"getXMargin(I)I",
+			"drawNonEmptyTooltip(Lnet/minecraft/client/font/TextRenderer;IIIILnet/minecraft/client/gui/DrawContext;)V",
+			"drawProgressBar(IILnet/minecraft/client/font/TextRenderer;Lnet/minecraft/client/gui/DrawContext;)V"
+	}, constant = @Constant(intValue = 96))
+	private int betterbundletooltips$changeTooltipWidth(int rows) {
+		return BundleTooltipUtil.getTooltipWidth();
 	}
 
 	/**
