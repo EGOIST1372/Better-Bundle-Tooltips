@@ -10,7 +10,7 @@ jobs:
   build:
     strategy:
       matrix:
-         Use these Java versions
+        # Use these Java versions
         java: [
           21,    # Current Java LTS
         ]
