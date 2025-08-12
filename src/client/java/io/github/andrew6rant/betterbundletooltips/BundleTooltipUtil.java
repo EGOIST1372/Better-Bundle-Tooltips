@@ -15,8 +15,11 @@ public class BundleTooltipUtil {
     public static int BUNDLE_MAX_COUNT = BUNDLE_ITEM_ROW_COUNT * BUNDLE_ITEM_COLUMN_COUNT;
 
     public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
-        drawContext.drawTexture(RenderLayer::getGuiTextured, progressBarFillTexture,x + 1, y - 2, progressBarFill, 4);
-        drawContext.drawTexture(RenderLayer::getGuiTextured, progressBarBorderTexture, x, y - 2, 108, 4);
+    // Draw the filled portion of the progress bar
+    drawContext.drawGuiTexture(progressBarFillTexture, x + 1, y - 2, progressBarFill, 4);
+
+    // Draw the border of the progress bar
+    drawContext.drawGuiTexture(progressBarBorderTexture, x, y - 2, 108, 4);
     }
 
 
