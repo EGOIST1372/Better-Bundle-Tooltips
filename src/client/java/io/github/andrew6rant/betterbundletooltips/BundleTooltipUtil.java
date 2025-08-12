@@ -21,9 +21,9 @@ public class BundleTooltipUtil {
 
 
     // This is to make it easier for other mods to modify bundle tooltip heights/widths after mine.
-    public static int getTooltipBackgroundXoffset() {
-        return -13;
-    }
+//    public static int getTooltipBackgroundXoffset() {
+ //       return -13;
+//    }
     public static int getTooltipWidth() {
         return 108;
     }
