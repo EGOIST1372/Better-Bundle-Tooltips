@@ -45,15 +45,15 @@ public class BundleTooltipUtil {
 //        return 8;
  //   }
 
-    public static int getNumberOfStacksShown(int i) {
-        int j = i > BUNDLE_MAX_COUNT ? (BUNDLE_MAX_COUNT-1) : BUNDLE_MAX_COUNT;
-        int k = i % 4;
-        int l = k == 0 ? 0 : 4 - k;
-        return Math.min(i, j - l);
-    }
+  //  public static int getNumberOfStacksShown(int i) {
+  //      int j = i > BUNDLE_MAX_COUNT ? (BUNDLE_MAX_COUNT-1) : BUNDLE_MAX_COUNT;
+   //     int k = i % 4;
+  //      int l = k == 0 ? 0 : 4 - k;
+   //     return Math.min(i, j - l);
+//    }
 
-    public static int getNumberOfStacksShown(ItemStack stack) {
-        BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT);
-        return getNumberOfStacksShown(bundleContentsComponent.size());
-    }
+ //   public static int getNumberOfStacksShown(ItemStack stack) {
+  //      BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT);
+  //      return getNumberOfStacksShown(bundleContentsComponent.size());
+  //  }
 }
