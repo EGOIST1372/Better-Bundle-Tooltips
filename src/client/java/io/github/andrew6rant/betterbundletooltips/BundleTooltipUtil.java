@@ -13,13 +13,11 @@ public class BundleTooltipUtil {
     public static int BUNDLE_ITEM_ROW_COUNT = 6; // number of items in a row, not number of rows lol
     public static int BUNDLE_ITEM_COLUMN_COUNT = 5;
     public static int BUNDLE_MAX_COUNT = BUNDLE_ITEM_ROW_COUNT * BUNDLE_ITEM_COLUMN_COUNT;
-    
-public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
-    // Draw the filled portion of the progress bar
-    drawContext.drawTexture(RenderLayer.getGui(), progressBarFillTexture, x + 1, y - 2, 0.0F, 0.0F, progressBarFill, 4, 108, 4);
 
-    // Draw the border of the progress bar
-    drawContext.drawTexture(RenderLayer.getGui(), progressBarBorderTexture, x, y - 2, 0.0F, 0.0F, 108, 4, 108, 4);
+public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
+    // Use the correct RenderPipeline: RenderLayer.GUI_TEXTURE
+    drawContext.drawTexture(RenderLayer.GUI_TEXTURE, progressBarFillTexture, x + 1, y - 2, 0.0F, 0.0F, progressBarFill, 4, 108, 4);
+    drawContext.drawTexture(RenderLayer.GUI_TEXTURE, progressBarBorderTexture, x, y - 2, 0.0F, 0.0F, 108, 4, 108, 4);
 }
 
     // This is to make it easier for other mods to modify bundle tooltip heights/widths after mine.
