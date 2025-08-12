@@ -21,39 +21,39 @@ public class BundleTooltipUtil {
 
 
     // This is to make it easier for other mods to modify bundle tooltip heights/widths after mine.
-//    public static int getTooltipBackgroundXoffset() {
- //       return -13;
-//    }
-//    public static int getTooltipWidth() {
-  //      return 108;
-//    }
+    public static int getTooltipBackgroundXoffset() {
+        return -13;
+    }
+    public static int getTooltipWidth() {
+        return 108;
+    }
 
 
-//    public static int getProgressBarFill() {
-//        return 106;
-//    }
-//    public static int getItemPadding() {
-//        return 18;
-//    }
-//    public static int getItemOffset() {
- //       return 1;
-  //  }
-  //  public static int getExtraItemsTextOffsetY() {
-  //      return 6;
-//    }
-//    public static int getItemTextOffsetX() {
-//        return 8;
- //   }
+    public static int getProgressBarFill() {
+        return 106;
+    }
+    public static int getItemPadding() {
+        return 18;
+    }
+    public static int getItemOffset() {
+        return 1;
+    }
+    public static int getExtraItemsTextOffsetY() {
+        return 6;
+    }
+    public static int getItemTextOffsetX() {
+        return 8;
+    }
 
-  //  public static int getNumberOfStacksShown(int i) {
-  //      int j = i > BUNDLE_MAX_COUNT ? (BUNDLE_MAX_COUNT-1) : BUNDLE_MAX_COUNT;
-   //     int k = i % 4;
-  //      int l = k == 0 ? 0 : 4 - k;
-   //     return Math.min(i, j - l);
-//    }
+    public static int getNumberOfStacksShown(int i) {
+        int j = i > BUNDLE_MAX_COUNT ? (BUNDLE_MAX_COUNT-1) : BUNDLE_MAX_COUNT;
+        int k = i % 4;
+        int l = k == 0 ? 0 : 4 - k;
+        return Math.min(i, j - l);
+    }
 
- //   public static int getNumberOfStacksShown(ItemStack stack) {
-  //      BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT);
-  //      return getNumberOfStacksShown(bundleContentsComponent.size());
-  //  }
+    public static int getNumberOfStacksShown(ItemStack stack) {
+        BundleContentsComponent bundleContentsComponent = stack.getOrDefault(DataComponentTypes.BUNDLE_CONTENTS, BundleContentsComponent.DEFAULT);
+        return getNumberOfStacksShown(bundleContentsComponent.size());
+    }
 }
