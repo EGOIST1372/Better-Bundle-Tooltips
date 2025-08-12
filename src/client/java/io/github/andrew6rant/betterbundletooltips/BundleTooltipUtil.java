@@ -17,7 +17,7 @@ public class BundleTooltipUtil {
     public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
         drawContext.drawTexture(RenderLayer::getGuiTextured, progressBarFillTexture,x + 1, y - 2, progressBarFill, 4);
         drawContext.drawTexture(RenderLayer::getGuiTextured, progressBarBorderTexture, x, y - 2, 108, 4);
-    
+    }
 
 
     // This is to make it easier for other mods to modify bundle tooltip heights/widths after mine.
