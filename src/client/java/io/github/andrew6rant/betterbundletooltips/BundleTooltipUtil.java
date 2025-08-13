@@ -1,5 +1,6 @@
 package io.github.andrew6rant.betterbundletooltips;
 
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.util.Identifier;
@@ -13,11 +14,11 @@ public class BundleTooltipUtil {
     public static int BUNDLE_MAX_COUNT = BUNDLE_ITEM_ROW_COUNT * BUNDLE_ITEM_COLUMN_COUNT;
 
     public static void drawProgressBar(int x, int y, TextRenderer textRenderer, DrawContext drawContext, Identifier progressBarFillTexture, int progressBarFill, Identifier progressBarBorderTexture) {
-        // Draw the filled portion of the progress bar
-        drawContext.drawGuiTexture(progressBarFillTexture, x + 1, y - 2, 0, 0, progressBarFill, 4, 108, 4);
+    // Draw the filled portion of the progress bar
+    drawContext.drawGuiTexture(RenderLayer.guiTexture(progressBarFillTexture), progressBarFillTexture, x + 1, y - 2, progressBarFill, 4);
 
-        // Draw the border of the progress bar
-        drawContext.drawGuiTexture(progressBarBorderTexture, x, y - 2, 0, 0, 108, 4, 108, 4);
+    // Draw the border of the progress bar
+    drawContext.drawGuiTexture(RenderLayer.guiTexture(progressBarBorderTexture), progressBarBorderTexture, x, y - 2, 108, 4);
     }
 
     public static int getTooltipBackgroundXoffset() {
